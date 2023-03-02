@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1677749257 source:d:\code\calculate exp\calculate exp\functions\main\cal_exp.cpp
+	<iostream>
+	<string.h>
+	<math.h>
+	<sstream>
+	<limits>
+	<fstream>
+	"../Calculator.h"
+	"../Checker.h"
+	"../logger.h"
+
+1677744683 d:\code\calculate exp\calculate exp\functions\calculator.h
+	<iostream>
+	<string.h>
+	<math.h>
+	<sstream>
+	<limits>
+
+1677744676 d:\code\calculate exp\calculate exp\functions\checker.h
+	<iostream>
+	<string.h>
+
+1677747437 d:\code\calculate exp\calculate exp\functions\logger.h
+	<iostream>
+	<fstream>
+	<filesystem>
+
