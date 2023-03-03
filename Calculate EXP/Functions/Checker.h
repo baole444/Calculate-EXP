@@ -1,43 +1,28 @@
 #include <iostream>
 #include <string.h>
-using std::cin; using std::cout; using std::string; using std::endl; using std::istringstream; using std::stod;
-int validatelvl(string level) {
+#include <charconv>
+using std::cout; using std::string; using std::endl; using std::stod;
+int validatelvl(const string& level) {
+
+    int lvl = 0;
     int output;
-    std::string::size_type sz;
-    double checker;
-    checker = 0;
-    output = 0;
-    try {
-        checker = stod(level, &sz);
-        if (checker == 0 || checker >= 1) output = 1;
-        else {
-            cout << "Invalid input, please try again." << endl;
-            output = 0;            
-        }
-    }
-    catch (std::exception& ia) {
-        cout << "Invalid input, please try again." << endl;
+
+    auto [lvl_ptr, lvl_err] = std::from_chars(level.data(), level.data() + level.size(), lvl);
+    if (lvl_err != std::errc() || lvl < 0) {
+        std::cerr << "Invalid input, required integer >= 0\n";
         output = 0;
-    }
+    } else output = 1;
+
     return output;
 }
-int validatexp(string exp) {
+int validatexp(const string& exp) {
+
+    double xp = 0;
     int output;
-    std::string::size_type sz;
-    double checker;
-    checker = 0.0;
-    output = 0;
-    try {
-        checker = stod(exp, &sz);
-        if (checker < 1 && checker >= 0) output = 1;
-        else {
-            output = 0;
-            cout << "Invalid input, please try again." << endl;
-        }
-    }
-    catch (std::exception& ia) {
+    auto [xp_ptr, xp_err] = std::from_chars(exp.data(), exp.data() + exp.size(), xp);
+    if (xp_err != std::errc() || xp > 1 || xp < 0) {
+        std::cerr << "Invalid input, required decimal 0 <= exp < 1\n";
         output = 0;
-        cout << "Invalid input, please try again." << endl;
-    }
-    return output;    
+    } else output = 1;
+    return output;
 }
